@@ -58,3 +58,62 @@ for (let i = 0; i < splitArr.length; i++) {
 }
 
 console.log(total)
+
+// X > lose (0 point) Y > draw (3 point) Z > win (6 points)
+// A > rock B > paper C > scissors
+
+let winTotal = 0
+for (let i = 0; i < splitArr.length; i++) {
+  const rock = 1
+  const paper = 2
+  const scissors = 3
+  const winner = 6
+  const draw = 3
+  const first = splitArr[i][0]
+  const second = splitArr[i][1]
+
+  //lose scenario
+  if (second === 'X') {
+    switch (first) {
+      case 'A':
+        winTotal = winTotal + scissors
+        break
+      case 'B':
+        winTotal = winTotal + rock
+        break
+      case 'C':
+        winTotal = winTotal + paper
+        break
+    }
+  }
+
+  //win scenario
+  if (second === 'Z') {
+    switch (first) {
+      case 'A':
+        winTotal = winTotal + paper + winner
+        break
+      case 'B':
+        winTotal = winTotal + scissors + winner
+        break
+      case 'C':
+        winTotal = winTotal + rock + winner
+        break
+    }
+  }
+  if (second === 'Y') {
+    switch (first) {
+      case 'A':
+        winTotal = winTotal + rock + draw
+        break
+      case 'B':
+        winTotal = winTotal + paper + draw
+        break
+      case 'C':
+        winTotal = winTotal + scissors + draw
+        break
+    }
+  }
+}
+
+console.log(winTotal)
